@@ -12,7 +12,7 @@ public class CadastroEstudante {
       System.out.println("Digite o peso da atividade " + i + ":");
       String pesoAtividade = scanner.nextLine();
     }
-  scanner.close();
+    scanner.close();
   }
 
 }
