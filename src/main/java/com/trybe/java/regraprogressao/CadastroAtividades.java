@@ -7,6 +7,7 @@ import java.util.Scanner;
  */
 public class CadastroAtividades {
   int somaDosPesos;
+  int somaDasNotas;
 
   /**
    * Cadastro.
@@ -25,13 +26,26 @@ public class CadastroAtividades {
 
       System.out.println("Digite a nota obtida para " + nome + ":");
       String nota = scanner.nextLine();
+
+      int calculoNota = Integer.parseInt(peso) * Integer.parseInt(nota);
+      somaDasNotas += calculoNota;
     }
     verificaSomaDosPesos(somaDosPesos);
   }
 
   void verificaSomaDosPesos(int pesos) {
     if (pesos == 100) {
-      System.out.println("Passou");
+      double media = (double) somaDasNotas / somaDosPesos;
+
+      if (media >= 85) {
+        System.out.println("Parabéns! Você alcançou " + media + "%! "
+                + "E temos o prazer de informar que você obteve aprovação!");
+      } else {
+        System.out.println(
+                "Lamentamos informar que, com base na sua pontuação alcançada neste período, "
+                        + media + "%, você não atingiu a pontuação mínima "
+                        + "necessária para sua aprovação.");
+      }
     } else {
       System.out.println("A soma dos pesos é diferente de 100!");
     }
