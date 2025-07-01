@@ -6,38 +6,48 @@ import java.util.Scanner;
  * The type Cadastro atividades.
  */
 public class CadastroAtividades {
-  int somaDosPesos;
-  int somaDasNotas;
+  private int somaDosPesos;
+  private int somaDasNotas;
+  private static final int SOMA_VALIDA_PESOS = 100;
+  private static final double NOTA_MINIMA_APROVACAO = 85.0;
+  private final Scanner scanner;
+
+  /**
+   * Instantiates a new Cadastro atividades.
+   *
+   * @param scanner the scanner
+   */
+  public CadastroAtividades(Scanner scanner) {
+    this.scanner = scanner;
+  }
 
   /**
    * Cadastro.
-   *
-   * @param scanner       the scanner
-   * @param qntAtividades the qnt atividades
    */
-  void cadastro(Scanner scanner, int qntAtividades) {
-    for (int i = 1; i <= qntAtividades; i += 1) {
+  public void cadastro() {
+    System.out.println("Digite a quantidade de atividades para cadastrar:");
+    String qntAtividades = scanner.nextLine();
+
+    for (int i = 1; i <= Integer.parseInt(qntAtividades); i += 1) {
       System.out.println("Digite o nome da atividade " + i + ":");
       String nome = scanner.nextLine();
 
-      System.out.println("Digite o peso da atividade " + i + ":");
-      String peso = scanner.nextLine();
-      somaDosPesos += Integer.parseInt(peso);
+      int peso = solicitarNumero("Digite o peso da atividade " + i + ":");
+      somaDosPesos += peso;
 
-      System.out.println("Digite a nota obtida para " + nome + ":");
-      String nota = scanner.nextLine();
+      int nota = solicitarNumero("Digite a nota obtida para " + nome + ":");
 
-      int calculoNota = Integer.parseInt(peso) * Integer.parseInt(nota);
+      int calculoNota = peso * nota;
       somaDasNotas += calculoNota;
     }
     verificaSomaDosPesos(somaDosPesos);
   }
 
-  void verificaSomaDosPesos(int pesos) {
-    if (pesos == 100) {
+  private void verificaSomaDosPesos(int pesos) {
+    if (pesos == SOMA_VALIDA_PESOS) {
       double media = (double) somaDasNotas / somaDosPesos;
 
-      if (media >= 85) {
+      if (media >= NOTA_MINIMA_APROVACAO) {
         System.out.println("Parabéns! Você alcançou " + media + "%! "
                 + "E temos o prazer de informar que você obteve aprovação!");
       } else {
@@ -48,6 +58,18 @@ public class CadastroAtividades {
       }
     } else {
       System.out.println("A soma dos pesos é diferente de 100!");
+    }
+  }
+
+  private int solicitarNumero(String mensagem) {
+    while (true) {
+      System.out.println(mensagem);
+      try {
+        String input = scanner.nextLine();
+        return Integer.parseInt(input);
+      } catch (NumberFormatException e) {
+        System.out.println("Entrada inválida. Por favor, digite um número inteiro.");
+      }
     }
   }
 }
