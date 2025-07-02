@@ -13,7 +13,7 @@ Este é um projeto simples em Java que calcula a nota final de um aluno com base
 
 ## Como Executar o Projeto
 
-Para executar o projeto, siga os passos abaixo. As instruções são baseadas nas recomendações do arquivo `FAQ.md` do projeto.
+Para executar o projeto, siga os passos abaixo:
 
 1.  **Clone o repositório:**
     ```bash
