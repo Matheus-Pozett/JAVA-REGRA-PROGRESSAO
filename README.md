@@ -52,4 +52,4 @@ Ao executar a aplicação, o console solicitará a quantidade de atividades a se
 
 ## Autor
 
--   **Matheus Pozett** - [GitHub](https://github.com/matheus-pozett)
+-   **Matheus Pozett** - [Linkedin](https://www.linkedin.com/in/matheus-pozett/)
